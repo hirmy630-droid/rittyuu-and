@@ -1,12 +1,12 @@
-const CACHE_NAME = 'tachu-pwa-v20260929115422';
+const CACHE_NAME = 'tachu-pwa-v20260929120502';
 const CORE_ASSETS = [
   './',
   './index.html',
-  './index.html?v=20260929115422',
+  './index.html?v=20260929120502',
   './manifest.json',
-  './manifest.json?v=20260929115422',
+  './manifest.json?v=20260929120502',
   './sw.js',
-  './sw.js?v=20260929115422'
+  './sw.js?v=20260929120502'
 ];
 
 self.addEventListener('install', (event) => {
@@ -51,7 +51,7 @@ async function networkFirst(request) {
   } catch (error) {
     const cached = await cache.match(request);
     if (cached) return cached;
-    return cache.match('./index.html?v=20260929115422');
+    return cache.match('./index.html?v=20260929120502');
   }
 }
 

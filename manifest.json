@@ -1,8 +1,8 @@
 {
-  "id": "tachu-pwa-v20260929115422",
+  "id": "tachu-pwa-v20260929120502",
   "name": "立駐エルボ",
   "short_name": "立駐エルボ",
-  "start_url": "./index.html?v=20260929115422",
+  "start_url": "./index.html?v=20260929120502",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#000000",
