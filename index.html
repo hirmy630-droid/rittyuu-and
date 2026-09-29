@@ -61,7 +61,6 @@
             font-weight: 600;
         }
 
-        /* タブ */
         .tab-wrapper {
             position: sticky;
             top: 0;
@@ -126,7 +125,6 @@
             flex-direction: column;
         }
 
-        /* 計算結果枠 */
         .result-box {
             height: 64px;
             padding: 0 16px;
@@ -388,39 +386,12 @@
         #boot-title{font-size:18px;font-weight:700;letter-spacing:.2px}
     </style>
 
+    <meta name="theme-color" content="#000000">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="立駐エルボ">
-    <link rel="apple-touch-icon" sizes="180x180" href="icon-180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
     <meta name="format-detection" content="telephone=no">
-<link rel="manifest" href="./manifest.json?v=20260929133740">
-    <script>
-    if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js?v=20260929133740').then(reg => {
-          reg.onupdatefound = () => {
-            const installingWorker = reg.installing;
-            if (!installingWorker) return;
-            installingWorker.onstatechange = () => {
-              if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                installingWorker.postMessage({ type: 'SKIP_WAITING' });
-              }
-            };
-          };
-        }).catch(() => {});
-
-        let refreshing = false;
-        navigator.serviceWorker.addEventListener('controllerchange', () => {
-          if (!refreshing) {
-            window.location.reload();
-            refreshing = true;
-          }
-        });
-      });
-    }
-    </script>
 </head>
 <body class="mode-90">
 
@@ -543,7 +514,7 @@
                 </div>
                 <div class="calc-cell orange-theme" id="cell-cheese-input" onclick="focusInput('cheese-input')">
                     <span class="input-label-left">ドレン下</span>
-                    <div id="cheese-input" class="input-value placeholder">H下端まで</div>
+                    <div id="cheese-input" class="input-value placeholder">H下端</div>
                 </div>
                 <div class="calc-cell" id="cell-cheese-plus" onclick="focusInput('cheese-plus')">
                     <span class="input-label-left">吊金具</span>
@@ -593,7 +564,7 @@
         'elbow-plus-90': '柱寸+足',
         'elbow-plus-input': '0',
         'elbow-plus-extra': '柱寸法',
-        'cheese-input': 'H下端まで',
+        'cheese-input': 'H下端',
         'cheese-plus': '0'
     };
 
