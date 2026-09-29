@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>立駐エルボ mobile</title>
+    <title>立駐エルボ</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         :root {
@@ -57,15 +57,16 @@
             overflow: hidden;
         }
 
-        /* アプリヘッダー */
+        /* アプリヘッダー (縦幅をスリムに短縮) */
         .app-header {
-            padding: 10px 14px;
+            padding: 5px 12px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             background: #0a0a0c;
             border-bottom: 1px solid var(--ios-border);
             flex-shrink: 0;
+            min-height: 38px;
         }
 
         /* ページコンテナ */
@@ -83,7 +84,6 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             min-height: 0;
             overflow: hidden;
         }
@@ -103,9 +103,9 @@
             display: none !important;
         }
 
-        /* セグメント切り替えタブ */
+        /* セグメント切り替えタブ (縦幅を小さく調整) */
         .tab-bar-container {
-            padding: 8px 12px;
+            padding: 4px 12px;
             background: #101012;
             border-bottom: 1px solid var(--ios-border);
             flex-shrink: 0;
@@ -113,42 +113,48 @@
 
         .segmented-control {
             display: flex;
-            background: #1c1c1f;
-            border-radius: 10px;
-            padding: 3px;
+            background: #18181b;
+            border-radius: 8px;
+            padding: 2px;
             gap: 3px;
             border: 1px solid #2a2a2e;
         }
 
         .tab-btn {
             flex: 1;
-            padding: 8px 0;
-            font-size: 14px;
+            padding: 4px 0;
+            font-size: 13px;
             font-weight: 700;
-            border-radius: 8px;
+            border-radius: 6px;
             text-align: center;
             color: #8e8e93;
             transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
             cursor: pointer;
             user-select: none;
+            border: 1.5px solid transparent;
+            background: transparent;
         }
 
+        /* 選択時のカラー縁取りスタイル (目立ちすぎず上品に強調) */
         .tab-btn.active.tab-drain {
-            background: var(--accent-drain);
-            color: #ffffff;
-            box-shadow: 0 2px 8px rgba(175, 82, 222, 0.35);
+            background: rgba(175, 82, 222, 0.16);
+            color: #e2aeff;
+            border-color: var(--accent-drain);
+            box-shadow: none;
         }
 
         .tab-btn.active.tab-vertical {
-            background: var(--accent-vertical);
-            color: #ffffff;
-            box-shadow: 0 2px 8px rgba(94, 92, 230, 0.35);
+            background: rgba(94, 92, 230, 0.16);
+            color: #b8b6ff;
+            border-color: var(--accent-vertical);
+            box-shadow: none;
         }
 
         .tab-btn.active.tab-horizontal {
-            background: #248a3d;
-            color: #ffffff;
-            box-shadow: 0 2px 8px rgba(50, 215, 75, 0.35);
+            background: rgba(50, 215, 75, 0.14);
+            color: #8ef79e;
+            border-color: var(--accent-horizontal);
+            box-shadow: none;
         }
 
         /* 切寸 & 保存アクションバー (タブの直下) */
@@ -163,13 +169,13 @@
             display: flex;
             align-items: stretch;
             gap: 8px;
-            height: 48px;
+            height: 44px;
         }
 
         .result-box {
             flex: 1;
-            border-radius: 12px;
-            padding: 0 14px;
+            border-radius: 10px;
+            padding: 0 12px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -184,9 +190,9 @@
         .result-box.horizontal { background: #248a3d; }
 
         .btn-save {
-            width: 100px;
+            width: 90px;
             border: none;
-            border-radius: 12px;
+            border-radius: 10px;
             font-size: 14px;
             font-weight: 800;
             color: #ffffff;
@@ -210,14 +216,14 @@
             align-items: center;
             justify-content: space-between;
             background: #141416;
-            padding: 6px 14px;
+            padding: 5px 12px;
             border-bottom: 1px solid #222226;
             flex-shrink: 0;
         }
 
         /* 入力パネル */
         .calc-panel {
-            padding: 8px 12px 4px;
+            padding: 6px 12px 2px;
             display: flex;
             flex-direction: column;
             flex-shrink: 0;
@@ -226,7 +232,7 @@
         .calc-panel-inner {
             background: #2c2c30;
             border: 1px solid #38383e;
-            border-radius: 12px;
+            border-radius: 10px;
             overflow: hidden;
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -235,8 +241,8 @@
 
         .calc-cell {
             background: #18181b;
-            height: 44px;
-            padding: 0 12px;
+            height: 38px;
+            padding: 0 10px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -252,14 +258,14 @@
         }
 
         .calc-label {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 700;
             color: #a1a1a6;
             white-space: nowrap;
         }
 
         .calc-val {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--ios-orange);
             text-align: right;
@@ -268,7 +274,7 @@
 
         .calc-val.placeholder {
             color: #ef4444 !important;
-            font-size: 16px;
+            font-size: 15px;
             opacity: 0.85;
         }
 
@@ -276,13 +282,13 @@
         .panel-keypad-divider {
             height: 1px;
             background: linear-gradient(90deg, transparent, #333338 15%, #44444a 50%, #333338 85%, transparent);
-            margin: 4px 14px;
+            margin: 3px 12px;
             flex-shrink: 0;
         }
 
-        /* テンキーエリア (縦画面に最適フィット) */
+        /* テンキーエリア (縦画面に完全フィット・見切れ防止) */
         .keypad-wrapper {
-            padding: 4px 12px 10px;
+            padding: 4px 12px 8px;
             flex: 1;
             display: flex;
             flex-direction: column;
@@ -295,18 +301,17 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: repeat(4, 1fr);
-            gap: 6px;
-            min-height: 200px;
-            max-height: 280px;
+            gap: 5px;
+            min-height: 160px;
         }
 
         .key-btn {
             background: #1c1c1e;
             color: #ffffff;
             height: 100%;
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 600;
-            border-radius: 12px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -324,24 +329,20 @@
         .key-btn.clear {
             background: #2e1d20;
             color: #ff453a;
-            font-size: 17px;
+            font-size: 16px;
             font-weight: 800;
             border-color: #4a2428;
-        }
-        .key-btn.backspace {
-            background: #262629;
-            color: #e5e5ea;
         }
 
         /* リセットボタン */
         .btn-reset {
-            margin-top: 8px;
-            height: 40px;
+            margin-top: 6px;
+            height: 36px;
             background: #1a1618;
             border: 1px solid #4a2428;
             color: #ff6b6b;
-            border-radius: 11px;
-            font-size: 14px;
+            border-radius: 9px;
+            font-size: 13px;
             font-weight: 700;
             display: flex;
             align-items: center;
@@ -358,21 +359,22 @@
 
         /* 保存データ (履歴) 画面 */
         .history-page-header {
-            padding: 10px 14px;
+            padding: 8px 12px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             background: #141416;
             border-bottom: 1px solid var(--ios-border);
             flex-shrink: 0;
+            min-height: 44px;
         }
 
         .history-list-scrollable {
             flex: 1;
-            padding: 12px;
+            padding: 10px 12px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
         }
@@ -380,11 +382,11 @@
         .history-card {
             background: #18181b;
             border: 1px solid #2c2c30;
-            border-radius: 12px;
-            padding: 11px 12px;
+            border-radius: 10px;
+            padding: 10px 12px;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 6px;
         }
 
         .history-card.is-locked {
@@ -393,20 +395,21 @@
         }
 
         .badge-type {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 800;
-            padding: 2px 8px;
+            padding: 2px 7px;
             border-radius: 6px;
             display: inline-block;
+            white-space: nowrap;
         }
         .badge-type.drain { background: rgba(175, 82, 222, 0.25); color: #d896ff; border: 1px solid rgba(175, 82, 222, 0.4); }
         .badge-type.vertical { background: rgba(94, 92, 230, 0.25); color: #b4b2ff; border: 1px solid rgba(94, 92, 230, 0.4); }
         .badge-type.horizontal { background: rgba(50, 215, 75, 0.2); color: #8ef79e; border: 1px solid rgba(50, 215, 75, 0.35); }
 
         .badge-no {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 800;
-            padding: 2px 8px;
+            padding: 2px 7px;
             border-radius: 6px;
             background: #27272a;
             color: #fbbf24;
@@ -415,24 +418,27 @@
             display: inline-flex;
             align-items: center;
             gap: 4px;
+            white-space: nowrap;
         }
 
-        /* ページ切り替えボタンスタイル */
+        /* ページ切り替えボタンスタイル (縦幅スリム化) */
         .btn-page-nav {
-            background: #242428;
-            border: 1px solid #38383e;
-            color: #ffffff;
-            font-size: 13px;
+            background: #202024;
+            border: 1px solid #34343a;
+            color: #e4e4e7;
+            font-size: 12px;
             font-weight: 700;
-            padding: 5px 11px;
-            border-radius: 8px;
+            padding: 3px 8px;
+            border-radius: 7px;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
             cursor: pointer;
+            white-space: nowrap;
+            flex-shrink: 0;
             transition: all 0.15s;
         }
-        .btn-page-nav:active { background: #323238; }
+        .btn-page-nav:active { background: #2c2c32; }
 
         /* トースト & モーダル */
         #toast {
@@ -487,32 +493,6 @@
         }
         .modal-overlay.active .modal-box { transform: scale(1); }
     </style>
-<link rel="manifest" href="./manifest.json?v=20260929120502">
-    <script>
-    if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js?v=20260929120502').then(reg => {
-          reg.onupdatefound = () => {
-            const installingWorker = reg.installing;
-            if (!installingWorker) return;
-            installingWorker.onstatechange = () => {
-              if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                installingWorker.postMessage({ type: 'SKIP_WAITING' });
-              }
-            };
-          };
-        }).catch(() => {});
-
-        let refreshing = false;
-        navigator.serviceWorker.addEventListener('controllerchange', () => {
-          if (!refreshing) {
-            window.location.reload();
-            refreshing = true;
-          }
-        });
-      });
-    }
-    </script>
 </head>
 <body>
 
@@ -557,16 +537,15 @@
 
         <!-- アプリ共通ヘッダー -->
         <header class="app-header" id="main-header">
-            <div class="flex items-center gap-2">
-                <span class="text-base font-bold text-white tracking-tight">立駐エルボ</span>
-                <span class="text-sm font-semibold px-2 py-0.5 rounded bg-zinc-800 text-zinc-400">mobile</span>
+            <div class="flex items-center gap-1.5 flex-nowrap">
+                <span class="text-base font-extrabold text-white tracking-tight whitespace-nowrap">立駐エルボ</span>
             </div>
             <!-- 2ページ目（保存データ）へ切り替えるボタン -->
             <button onclick="switchView('history')" class="btn-page-nav">
-                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 <span>保存データ</span>
                 <span id="nav-history-count" class="px-1.5 py-0.2 rounded-full bg-amber-500/20 text-amber-400 font-extrabold text-xs">0</span>
-                <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+                <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
             </button>
         </header>
 
@@ -733,17 +712,17 @@
 
             <!-- ================= 2ページ目: 保存データ (履歴) 画面 ================= -->
             <div id="view-history" class="page-view is-hidden">
-                <!-- 履歴専用ヘッダー -->
+                <!-- 履歴専用ヘッダー (1行でコンパクトに配置) -->
                 <div class="history-page-header">
                     <button onclick="switchView('calc')" class="btn-page-nav">
-                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
+                        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
                         <span>計算に戻る</span>
                     </button>
-                    <div class="flex items-center gap-2">
+                    <div class="flex items-center gap-1.5">
                         <span class="text-sm font-bold text-zinc-200">保存データ</span>
-                        <span id="history-count" class="text-sm px-2 py-0.5 rounded-full bg-zinc-800 text-zinc-400">0件</span>
+                        <span id="history-count" class="text-xs px-1.5 py-0.5 rounded-full bg-zinc-800 text-zinc-400 font-bold">0件</span>
                     </div>
-                    <button onclick="clearHistory()" class="text-sm text-red-400 hover:text-red-300 font-bold px-2.5 py-1 rounded bg-red-950/40 border border-red-900/60">
+                    <button onclick="clearHistory()" class="text-xs text-red-400 hover:text-red-300 font-bold px-2 py-1 rounded bg-red-950/40 border border-red-900/60 whitespace-nowrap">
                         履歴消去
                     </button>
                 </div>
@@ -1225,18 +1204,21 @@
             }
 
             container.innerHTML = histories.map(h => {
-                const label = h.coreLabel || (h.type === 'drain' ? 'ドレン下' : '芯-柱');
-                const val = h.coreVal !== undefined ? formatNum(h.coreVal) : (h.desc || '');
+                // 指示された5つの情報のみ表示:「タブ名」「No.」「呼び径」「芯-柱寸法」「計算結果」
+                const isDrain = h.type === 'drain';
+                const label = isDrain ? 'ドレン下' : '芯-柱';
+                const val = h.coreVal !== undefined ? formatNum(h.coreVal) : '';
                 return `
                 <div class="history-card ${h.locked ? 'is-locked' : ''}">
+                    <!-- 上段: タブ名, No., 呼び径, 操作アイコン -->
                     <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-2 flex-wrap">
+                        <div class="flex items-center gap-2">
                             <span class="badge-type ${h.type}">${h.typeLabel}</span>
                             <button class="badge-no" onclick="openNumberEditModal(${h.id})" title="タップして変更">
                                 <span>No. ${h.customNo || '1'}</span>
-                                <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                                <svg width="9" height="9" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
                             </button>
-                            <span class="text-sm font-bold text-zinc-300">${h.size}</span>
+                            <span class="text-sm font-extrabold text-zinc-300 ml-0.5">${h.size}</span>
                         </div>
                         <div class="flex items-center gap-1">
                             <button onclick="toggleLock(${h.id})" class="p-1 text-zinc-400">
@@ -1253,16 +1235,17 @@
                         </div>
                     </div>
 
+                    <!-- 下段: 芯-柱寸法(またはドレン下寸法) と 計算結果(切寸) のみ -->
                     <div class="flex items-center justify-between pt-1 border-t border-zinc-800">
                         <div class="flex items-baseline gap-1">
                             <span class="text-sm font-bold text-zinc-400">${label}:</span>
                             <span class="text-base font-extrabold text-amber-400">${val}</span>
-                            <span class="text-sm font-bold text-zinc-400">mm</span>
+                            <span class="text-xs font-bold text-zinc-500">mm</span>
                         </div>
                         <div class="flex items-baseline gap-1 cursor-pointer" onclick="copyRaw('${h.result}')">
                             <span class="text-sm font-bold text-zinc-400">切寸:</span>
                             <span class="text-xl font-black text-white">${h.result}</span>
-                            <span class="text-sm font-bold text-zinc-400">mm</span>
+                            <span class="text-xs font-bold text-zinc-400">mm</span>
                         </div>
                     </div>
                 </div>
